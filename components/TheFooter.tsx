@@ -2,16 +2,17 @@
 
 import { useTranslation } from "@/app/i18n/client";
 import { languages } from "@/app/i18n/settings";
-import { Trans } from "react-i18next/TransWithoutContext";
-import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { Trans } from "react-i18next/TransWithoutContext";
 
 const TheFooter = ({ lang }: { lang: string }): JSX.Element => {
-  const { t } = useTranslation(lang, "footer");
-
-  const pathname = usePathname();
-
   const router = useRouter();
+  const { t, i18n } = useTranslation(lang, "footer");
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+    router.push(`/${lang}`);
+  };
 
   return (
     <footer className="container">
@@ -22,8 +23,8 @@ const TheFooter = ({ lang }: { lang: string }): JSX.Element => {
         .filter((l) => lang !== l)
         .map((l, index) => {
           return (
-            <span key={l} onClick={() => router.push(`/${l}${pathname}`)}>
-              {l}
+            <span key={l} onClick={() => changeLanguage(l)}>
+              {t("lang")}
             </span>
           );
         })}

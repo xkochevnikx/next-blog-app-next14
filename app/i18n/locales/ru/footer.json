@@ -1,3 +1,4 @@
 {
-  "languageSwitcher": "Переключиться с <1>{{lang}}</1> на: "
+  "languageSwitcher": "Переключиться с <1>{{lang}}</1> на: ",
+  "lang": "ru"
 }

@@ -9,9 +9,10 @@ export default async function Home({
 
   return (
     <>
-      <h1>lang {lang}</h1>
-      {t("title")}
-      
+      <h1>
+        {t("title")}-{lang}
+      </h1>
+      {t("description")}
     </>
   );
 }
