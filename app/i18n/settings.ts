@@ -12,5 +12,12 @@ export function getOptions(lng = fallbackLng, ns = defaultNS) {
     fallbackNS: defaultNS,
     defaultNS,
     ns,
+    backend: {
+      projectId: "",
+      apiKey: "",
+      version: "latest",
+      private: true,
+      referenceLng: "en",
+    },
   };
 }

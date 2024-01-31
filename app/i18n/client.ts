@@ -4,27 +4,15 @@ import {
   initReactI18next,
   useTranslation as useTranslationOrg,
 } from "react-i18next";
-import resourcesToBackend from "i18next-resources-to-backend";
-import { getOptions, languages, cookieName } from "./settings";
+import { getOptions, languages } from "./settings";
 import { useEffect } from "react";
+import LocizeBackend from "i18next-locize-backend";
 
-//! это клиентская логика, с сервера летит перевод вида
-`[Object: null prototype] [Module] {
-languageSwitcher: [Getter],
-  lang: [Getter],
-  default: [Getter]
-}`;
-
-let resp;
+//todo клиентный хук для использования без провайдера
 
 i18next
   .use(initReactI18next)
-  .use(
-    resourcesToBackend(
-      async (language, namespace) =>
-        import(`./locales/${language}/${namespace}.json`)
-    )
-  )
+  .use(LocizeBackend)
   .init({
     ...getOptions(),
   });
